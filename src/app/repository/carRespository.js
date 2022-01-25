@@ -5,25 +5,17 @@ class carRepository {
     return carSchema.create(payload);
   }
 
-  // async findall() {
-  //   return carSchema.find();
-  // }
+  async findall() {
+    return carSchema.find();
+  }
 
-  // async find(payload) {
-  //   return carSchema.find(payload, '-_id car_id name cpf office birthday situation');
-  // }
+  async find(payload) {
+    return carSchema.find(payload,'_id modelo cor ano acessorios quantidadePassageiros');
+  }
+  async findId(id) {
+    return carSchema.findOne({ _id: id });
+  }
 
-  // async update(id, payload) {
-  //   await carSchema.updateOne({ car_id: id }, payload);
-  //   return carSchema.findOne({ car_id: id }, '-_id car_id name cpf office birthday situation');
-  // }
-
-  // async delete(id) {
-  //   return carSchema.deleteOne({ car_id: id });
-  // }
-
-  // async findId(id) {
-  //   return carSchema.findOne({ car_id: id });
-  // }
+  
 }
 module.exports = new carRepository();

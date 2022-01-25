@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const carSchema = mongoose.Schema({
+
   modelo: {
     type: String,
     required: true
@@ -15,6 +16,7 @@ const carSchema = mongoose.Schema({
   },
   acessorios: {
     type: Array,
+    default: [],
     required: true
   },
   quantidadePassageiros: {
