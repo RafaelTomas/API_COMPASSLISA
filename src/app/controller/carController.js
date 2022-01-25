@@ -1,4 +1,5 @@
 const carService = require('../service/carService');
+const notFound = require('../../erros/notFound');
 
 class carController {
   async create(req, res) {
@@ -43,6 +44,26 @@ class carController {
         ]
       });
 
+    }
+  }
+  async delete(req, res) {
+    const carId = req.params._id;
+    try{
+      const car = await carService.findId(carId);
+      if(car === null) {
+        throw new notFound(`ID: ${carId}`);
+      }
+      await carService.delete(carId);
+      res.status(204).end();
+    } catch (error) {
+      return res.status(carService.errorCodes(error)).json({
+        'message': 'bad request',
+        'details':[
+          {
+            'message':error.message,
+          }
+        ]
+      });
     }
   }
 

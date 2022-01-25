@@ -30,7 +30,13 @@ class carService {
     }
   }
 
+  async findId(id) {
+    return carRepository.findId(id);
+  }
 
+  async delete(id) {
+    return carRepository.delete(id);
+  }
 
   errorCodes(erro) {
     let status = 500;
