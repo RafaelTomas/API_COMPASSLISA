@@ -1,6 +1,7 @@
 const carSchema = require('../schemas/carSchemas');
 
 class carRepository {
+  
   async create(payload) {
     return carSchema.create(payload);
   }
@@ -21,6 +22,10 @@ class carRepository {
     return carSchema.deleteOne({ _id: id });
   }
 
+  async update(id, payload) {
+    await carSchema.updateOne({ _id: id }, payload);
+    return carSchema.findOne({ _id: id }, '_id modelo cor ano acessorios quantidadePassageiros');
+  }
   
 }
 module.exports = new carRepository();

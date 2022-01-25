@@ -14,4 +14,3 @@ class Database {
 
 module.exports = new Database().connect();
 
-//tzj9QIoBtYXUcxFL
