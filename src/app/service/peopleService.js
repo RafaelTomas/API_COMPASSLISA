@@ -9,13 +9,13 @@ class peopleService {
     return data;
   }
 
-  async find(modelo) {
+  async find(nome) {
     let data = {};
-    if (typeof modelo === 'undefined') {
+    if (typeof nome === 'undefined') {
       data = await peopleRepository.findall();
     } else {
-      const ObjModelo = this.validateModelo(modelo);
-      const obj = Object.assign({}, ObjModelo);
+      const Objnome = this.validatenome(nome);
+      const obj = Object.assign({}, Objnome);
       data = await peopleRepository.find(obj);
     }
     return data;
@@ -34,13 +34,13 @@ class peopleService {
     return data;
   }
 
-  validateModelo(modelo) {
-    if (typeof modelo === 'undefined') {
-      const ObjModelo = {};
-      return ObjModelo;
+  validatenome(nome) {
+    if (typeof nome === 'undefined') {
+      const Objnome = {};
+      return Objnome;
     } else {
-      const ObjModelo2 = { Modelo: { $regex: '.*' + modelo + '.*' } };
-      return ObjModelo2;
+      const Objnome2 = { nome: { $regex: '.*' + nome + '.*' } };
+      return Objnome2;
     }
   }
   
