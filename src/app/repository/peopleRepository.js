@@ -11,7 +11,7 @@ class peopleRepository {
   }
 
   async find(payload) {
-    return peopleSchema.find(payload,'_id modelo cor ano acessorios quantidadePassageiros');
+    return peopleSchema.find(payload,'_id nome cpf data_nascimento email senha habilitado');
   }
  
   async findId(id) {
@@ -24,7 +24,7 @@ class peopleRepository {
 
   async update(id, payload) {
     await peopleSchema.updateOne({ _id: id }, payload);
-    return peopleSchema.findOne({ _id: id }, '_id modelo cor ano acessorios quantidadePassageiros');
+    return peopleSchema.findOne({ _id: id }, '_id nome cpf data_nascimento email senha habilitado');
   }
   
 }
