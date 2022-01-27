@@ -6,6 +6,7 @@ module.exports = server => {
   server.use((req, res, next) => {
     carRouter(server, new Router());
     peopleRouter(server, new Router());
+    //  peopleRouter(server, new Router());
     next();
   });
 };
