@@ -1,9 +1,9 @@
-class InvalidBody extends Error {
+class invalidBody extends Error {
   constructor(erro) {
     super(`${erro}`);
-    this.name = 'InvalidBody';
+    this.name = 'invalidBody';
     this.idErro = 1;
   }
 }
 
-module.exports = InvalidBody;
+module.exports = invalidBody;

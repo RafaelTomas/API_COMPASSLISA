@@ -1,6 +1,6 @@
 const carRepository = require('../repository/carRepository');
-const NotFound = require('../../erros/notFound.js');
-const InvalidBody = require('../../erros/InvalidBody');
+const notFound = require('../../erros/notFound.js');
+const invalidBody = require('../../erros/invalidBody');
 
 class carService {
 
@@ -46,10 +46,10 @@ class carService {
   
   errorCodes(erro) {
     let status = 500;
-    if (erro instanceof NotFound) {
+    if (erro instanceof notFound) {
       status = 404;
     }
-    if (erro instanceof InvalidBody) {
+    if (erro instanceof invalidBody) {
       status = 400;
     }
 
