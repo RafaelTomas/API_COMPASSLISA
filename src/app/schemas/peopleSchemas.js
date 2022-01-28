@@ -16,11 +16,13 @@ const peopleSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   senha: {
     type: String,
-    required: true
+    required: true,
+    select: false
   },
   habilitado: {
     type: String,
