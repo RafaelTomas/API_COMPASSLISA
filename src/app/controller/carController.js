@@ -30,8 +30,12 @@ class carController {
 
   async find(req, res) {
     try {
-      const modelo1 = req.query.modelo;
-      const data = await carService.find(modelo1);
+      const model = req.query.modelo;
+      const colors = req.query.cor;
+      const year= req.query.ano;
+      const acessories= req.query.acessorios;
+      const numberPassengers= req.query.quantidadePassageiros;
+      const data = await carService.find(model,colors,year,acessories,numberPassengers);
       return res.status(200).json({
         'cars': data
       });
@@ -49,7 +53,7 @@ class carController {
   }
 
   async findById(req, res) {
-    const id = req.params;
+    const id = req.params._id;
     try {
       const car = await carService.findById(id);
       return res.status(200).json(car);
@@ -68,7 +72,7 @@ class carController {
   async delete(req, res) {
     const carId = req.params._id;
     try {
-      const car = await carService.findId(carId);
+      const car = await carService.findById(carId);
       if (car === null) {
         throw new notFound(`ID: ${carId}`);
       }

@@ -1,13 +1,14 @@
 const Joi = require('joi');
 const invalidBody = require('../../../erros/invalidBody');
 
+
 module.exports = async (req,res,next) =>{
   try {
     const carSchema = Joi.object({
       modelo: Joi.string().min(3).required().trim(),
-      cor: Joi.string().pattern(/^[0-9]+$/, 'numbers').length(11).required(),
-      ano: Joi.date().format('YYYY').max('now').min('1-1-1950').required(),
-      acessorios: Joi.array().min(1).items(Joi.string().unique()).required(),
+      cor: Joi.string().min(3).trim().required(),
+      ano: Joi.date().max('2022').min('1950').raw().required(),
+      acessorios: Joi.array().min(1).items().unique().required(),
       quantidadePassageiros: Joi.number().min(2).required(),
     });
    
