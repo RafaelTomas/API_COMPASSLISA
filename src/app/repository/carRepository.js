@@ -10,10 +10,6 @@ class carRepository {
     return carSchema.find();
   }
 
-  async find(payload) {
-    return carSchema.find(payload,'_id modelo cor ano acessorios quantidadePassageiros');
-  }
- 
   async findId(id) {
     return carSchema.findOne({ _id: id });
   }
@@ -22,9 +18,8 @@ class carRepository {
     return carSchema.deleteOne({ _id: id });
   }
 
-  async update(id, payload) {
-    await carSchema.updateOne({ _id: id }, payload);
-    return carSchema.findOne({ _id: id }, '_id modelo cor ano acessorios quantidadePassageiros');
+  async update(id) {
+    return carSchema.updateOne({ _id: id });
   }
   
 }

@@ -9,10 +9,6 @@ class peopleRepository {
   async findall() {
     return peopleSchema.find();
   }
-
-  async find(payload) {
-    return peopleSchema.find(payload,'_id nome cpf data_nascimento email senha habilitado');
-  }
  
   async findId(id) {
     return peopleSchema.findOne({ _id: id });
@@ -22,9 +18,8 @@ class peopleRepository {
     return peopleSchema.deleteOne({ _id: id });
   }
 
-  async update(id, payload) {
-    await peopleSchema.updateOne({ _id: id }, payload);
-    return peopleSchema.findOne({ _id: id }, '_id nome cpf data_nascimento email senha habilitado');
+  async update(id) {
+    return peopleSchema.updateOne({ _id: id });
   }
   
 }

@@ -1,5 +1,6 @@
 const Joi = require('joi');
 const invalidBody = require('../../../erros/invalidBody');
+const simOrNao = require('../../helper/enum');
 
 const now = Date.now();
 const cutoffDate = new Date(now - (1000 * 60 * 60 * 24 * 365 * 18));
@@ -7,12 +8,12 @@ const cutoffDate = new Date(now - (1000 * 60 * 60 * 24 * 365 * 18));
 module.exports = async (req,res,next) =>{
   try {
     const peopleSchema = Joi.object({
-      name: Joi.string().min(3).required().trim(),
+      name: Joi.string().min(3).trim().required(),
       cpf: Joi.string().pattern(/^[0-9]+$/, 'numbers').length(11).required(),
       data_nascimento: Joi.date().format('DD/MM/YYYY').max(cutoffDate).required(),
       email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: false } }).required(),
       senha: Joi.string().min(6).required(),
-      habilitado: Joi.string().valid('sim','não').required()
+      habilitado: Joi.string().valid(simOrNao).required()
     });
    
     const {error} = await peopleSchema.validate(req.body,{abortEarl:true});

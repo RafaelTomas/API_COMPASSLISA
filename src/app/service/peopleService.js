@@ -1,6 +1,7 @@
 const peopleRepository = require('../repository/peopleRepository');
-const notFound = require('../../erros/notFound.js');
 const invalidBody = require('../../erros/invalidBody');
+const notFound = require('../../erros/notFound');
+
 
 class peopleService {
 
@@ -14,8 +15,7 @@ class peopleService {
     if (typeof nome === 'undefined') {
       data = await peopleRepository.findall();
     } else {
-      const Objnome = this.validatenome(nome);
-      const obj = Object.assign({}, Objnome);
+      const obj = Object.assign({});
       data = await peopleRepository.find(obj);
     }
     return data;
@@ -32,16 +32,6 @@ class peopleService {
   async update(id, payload) {
     const data = await peopleRepository.update(id, payload);
     return data;
-  }
-
-  validatenome(nome) {
-    if (typeof nome === 'undefined') {
-      const Objnome = {};
-      return Objnome;
-    } else {
-      const Objnome2 = { nome: { $regex: '.*' + nome + '.*' } };
-      return Objnome2;
-    }
   }
   
   errorCodes(erro) {
