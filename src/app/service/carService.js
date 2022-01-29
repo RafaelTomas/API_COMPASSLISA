@@ -22,11 +22,13 @@ class carService {
   }
 
   async findById(id) {
-    return carRepository.findId(id);
+    const data = carRepository.findId(id);
+    return data;
   }
 
   async delete(id) {
-    return carRepository.delete(id);
+    const data = carRepository.delete(id);
+    return data;
   }
 
   async update(id, payload) {

@@ -1,33 +1,40 @@
-const Joi = require('joi');
+const Joi = require('joi').extend(require('@joi/date'));
 const invalidBody = require('../../../erros/invalidBody');
-const simOrNao = require('../../helper/enum');
+const validateCPF = require('../../helper/cpf');
 
+const cpf = (cpf, helper) => {
+  if (validateCPF(cpf)) {
+    return helper.message('insert valid cpf');
+  } else {
+    return true;
+  }
+};
 const now = Date.now();
 const cutoffDate = new Date(now - (1000 * 60 * 60 * 24 * 365 * 18));
 
-module.exports = async (req,res,next) =>{
+module.exports = async (req, res, next) => {
   try {
     const peopleSchema = Joi.object({
-      name: Joi.string().min(3).trim().required(),
-      cpf: Joi.string().pattern(/^[0-9]+$/, 'numbers').length(11).required(),
+      nome: Joi.string().min(3).trim().required(),
+      cpf: Joi.string().custom(cpf).required(),
       data_nascimento: Joi.date().format('DD/MM/YYYY').max(cutoffDate).required(),
-      email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: false } }).required(),
+      email: Joi.string().email({ minDomainSegments: 2 }).required(),
       senha: Joi.string().min(6).required(),
-      habilitado: Joi.string().valid(simOrNao).required()
+      habilitado: Joi.string().valid('sim', 'não').required()
     });
-   
-    const {error} = await peopleSchema.validate(req.body,{abortEarl:true});
-    if(error) throw new invalidBody(error);
+
+    const { error } = await peopleSchema.validate(req.body, { abortEarl: true });
+    if (error) throw new invalidBody(error);
     return next();
   } catch (error) {
     return res.status(400).json({
       'message': 'bad request',
-      'details':[
+      'details': [
         {
-          'message':error.message,
+          'message': error.message,
         }
       ]
     });
-        
+
   }
 };

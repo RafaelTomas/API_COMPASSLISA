@@ -69,7 +69,7 @@ class peopleController {
   async delete(req, res) {
     const peopleId = req.params._id;
     try {
-      const people = await peopleService.findId(peopleId);
+      const people = await peopleService.findById(peopleId);
       if (people === null) {
         throw new notFound(`ID: ${peopleId}`);
       }

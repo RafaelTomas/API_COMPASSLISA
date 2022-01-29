@@ -14,13 +14,13 @@
 </p>
 
 <h4 align="center">
-	🚧   Concluido 🚀 🚧
+	🚧   Em Construção 🚀 🚧
 </h4>
 
 ## Sobre o Projeto 
 
 <h3 align="center">
-  Dando um "help" a Dona Maria, organizar os funcionarios e os produtos de forma que só os gerentes adicionem os produtos.
+   Alugue seu carro com a compassLisa, os melhores carros de luxo no melhor lugar, e com a api tornando tudo mais facil
 </h3>
 
 
@@ -39,10 +39,10 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/ItaloDavidb/API_EMPLOYEE.git>
+$ git clone <>
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd apiDonaMaria
+$ cd APICompassLisa
 
 # Instale as dependências
 $ npm install
@@ -175,23 +175,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
     </tr>
 </table>
 
-# 👨‍💻Autores
+# 👨‍💻Autor
 
-  Desenvolvedores e suas respectivas funções no Projeto:
-  
- 
- Função | Devs 
---------|-----
-P.O | [Felipe Silva]()
-Scrum Master|[Matheus Moraes](https://www.linkedin.com/in/matheus-moraes-ba9020209/)
-Deployer|[Rafael Tomás](https://www.linkedin.com/in/rafael-tomas-30b9671a9/)
-QA|[Pedro Menezes](https://github.com/pedrohmenezes1)
-Code review|[Adson Souza](https://www.linkedin.com/in/adson-sousa-de-oliveira-5311a3207/)
-Code review|[Italo Alves](https://www.linkedin.com/in/italo-alves-01457a1a6/)
 
-```
-Todos os Devs, com excessão do P.O, atuaram no desenvolvimento da  API.
-```
 
 
 # 📝Licença
