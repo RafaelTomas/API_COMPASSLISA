@@ -10,14 +10,8 @@ class peopleService {
     return data;
   }
 
-  async find(nome) {
-    let data = {};
-    if (typeof nome === 'undefined') {
-      data = await peopleRepository.findall();
-    } else {
-      const obj = Object.assign({});
-      data = await peopleRepository.find(obj);
-    }
+  async find() {
+    let data = await peopleRepository.findall();
     return data;
   }
   
@@ -29,8 +23,8 @@ class peopleService {
     return peopleRepository.delete(id);
   }
 
-  async update(id, payload) {
-    const data = await peopleRepository.update(id, payload);
+  async update(id) {
+    const data = await peopleRepository.update(id);
     return data;
   }
   

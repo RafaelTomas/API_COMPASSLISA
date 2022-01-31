@@ -7,18 +7,13 @@ class carService {
   async create(payload) {
     const data = await carRepository.create(payload);
     return data;
-    
+
   }
 
-  async find(modelo) {
-    let data = {};
-    if (typeof modelo === 'undefined') {
-      data = await carRepository.findall();
-    } else {
-      const obj = Object.assign({});
-      data = await carRepository.find(obj);
-    }
-    return data;
+  async find() {
+    const data = await carRepository.findall();
+    return data ;
+  
   }
 
   async findById(id) {
@@ -31,8 +26,8 @@ class carService {
     return data;
   }
 
-  async update(id, payload) {
-    const data = await carRepository.update(id, payload);
+  async update(id) {
+    const data = await carRepository.update(id);
     return data;
   }
 

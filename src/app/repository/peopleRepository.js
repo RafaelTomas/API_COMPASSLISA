@@ -11,15 +11,15 @@ class peopleRepository {
   }
  
   async findId(id) {
-    return peopleSchema.findOne({ _id: id });
+    return peopleSchema.findOne(id);
   }
 
   async delete(id) {
-    return peopleSchema.deleteOne({ _id: id });
+    return peopleSchema.deleteOne(id);
   }
 
   async update(id) {
-    return peopleSchema.updateOne({ _id: id });
+    return peopleSchema.updateOne(id);
   }
   
 }

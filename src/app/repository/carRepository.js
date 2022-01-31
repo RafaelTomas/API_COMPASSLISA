@@ -11,15 +11,15 @@ class carRepository {
   }
 
   async findId(id) {
-    return carSchema.findOne({ _id: id });
+    return carSchema.findOne(id);
   }
 
   async delete(id) {
-    return carSchema.deleteOne({ _id: id });
+    return carSchema.deleteOne(id);
   }
 
   async update(id) {
-    return carSchema.updateOne({ _id: id });
+    return carSchema.updateOne(id);
   }
   
 }
