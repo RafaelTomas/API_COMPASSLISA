@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require('joi').extend(require('@joi/date'));
 const invalidBody = require('../../../erros/invalidBody');
 
 const description = Joi.object({descricao: Joi.string().required()});

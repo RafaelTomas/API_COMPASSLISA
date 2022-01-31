@@ -9,15 +9,15 @@ const cpf = (cpf, helper) => {
     return true;
   }
 };
-const now = Date.now();
-const cutoffDate = new Date(now - (1000 * 60 * 60 * 24 * 365 * 18));
+
+const birthdata = new Date((Date.now()) - (1000 * 60 * 60 * 24 * 365 * 18));
 
 module.exports = async (req, res, next) => {
   try {
     const peopleSchema = Joi.object({
       nome: Joi.string().min(3).trim().required(),
-      cpf: Joi.string().custom(cpf).required(),
-      data_nascimento: Joi.date().format('DD/MM/YYYY').max(cutoffDate).required(),
+      cpf: Joi.string().custom(cpf).unique().required(),
+      data_nascimento: Joi.date().format('DD/MM/YYYY').max(birthdata).required(),
       email: Joi.string().email({ minDomainSegments: 2 }).required(),
       senha: Joi.string().min(6).required(),
       habilitado: Joi.string().valid('sim', 'não').required()
