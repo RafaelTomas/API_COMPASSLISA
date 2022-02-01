@@ -10,8 +10,8 @@ class CarService {
 
   }
 
-  async find() {
-    const data = await CarRepository.findall();
+  async find(payload) {
+    const data = await CarRepository.findall(payload);
     return data ;
   
   }

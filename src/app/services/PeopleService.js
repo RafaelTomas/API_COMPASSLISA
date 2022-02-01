@@ -10,8 +10,8 @@ class PeopleService {
     return data;
   }
 
-  async find() {
-    let data = await PeopleRepository.findall();
+  async find(payload) {
+    let data = await PeopleRepository.findall(payload);
     return data;
   }
   
