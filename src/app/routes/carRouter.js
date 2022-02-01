@@ -1,5 +1,5 @@
-const carController = require('../app/controller/carController');
-const validation = require('../app/validation/car');
+const carController = require('../controllers/CarController');
+const validation = require('../validations/car');
 
 
 module.exports = (server, routes, prefix = '/api/v1/car') => {

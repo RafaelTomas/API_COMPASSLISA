@@ -1,8 +1,8 @@
 const peopleSchema = require('../schemas/peopleSchemas');
 const bcrypt = require('bcryptjs');
-const generateToken = require('../helper/generatetoken');
+const generateToken = require('../helpers/generateToken');
 
-class authenticateController {
+class AuthenticateController {
   async authenticate (req, res) {
     const { email, senha } = req.body;
     const user = await peopleSchema.findOne({ email }).select('+senha');
@@ -21,4 +21,4 @@ class authenticateController {
   }
 }
 
-module.exports = new authenticateController();
+module.exports = new AuthenticateController();

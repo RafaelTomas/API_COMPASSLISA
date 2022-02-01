@@ -1,4 +1,4 @@
-class notFound extends Error {
+class NotFound extends Error {
   constructor(service) {
     super(`${service} not found`);
     this.name = 'notFound';
@@ -6,4 +6,4 @@ class notFound extends Error {
   }
 }
 
-module.exports = notFound;
+module.exports = NotFound;

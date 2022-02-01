@@ -1,11 +1,11 @@
-const carService = require('../service/carService');
-const notFound = require('../../erros/notFound');
+const CarService = require('../services/CarService');
+const NotFound = require('../errors/NotFound');
 
 class carController {
 
   async create(req, res) {
     try {
-      const data = await carService.create(req.body);
+      const data = await CarService.create(req.body);
       return res.status(201).json({
         'veiculos': {
           '_id': data._id,
@@ -17,7 +17,7 @@ class carController {
         }
       });
     } catch (error) {
-      return res.status(carService.errorCodes(error)).json({
+      return res.status(CarService.errorCodes(error)).json({
         'message': 'bad request',
         'details': [
           {
@@ -35,12 +35,12 @@ class carController {
       const year= req.query.ano;
       const acessories= req.query.acessorios;
       const numberPassengers= req.query.quantidadePassageiros;
-      const data = await carService.find(model,colors,year,acessories,numberPassengers);
+      const data = await CarService.find(model,colors,year,acessories,numberPassengers);
       return res.status(200).json({
         'cars': data
       });
     } catch (error) {
-      return res.status(carService.errorCodes(error)).json({
+      return res.status(CarService.errorCodes(error)).json({
         'message': 'bad request',
         'details': [
           {
@@ -55,10 +55,10 @@ class carController {
   async findById(req, res) {
     const id = req.params._id;
     try {
-      const car = await carService.findById(id);
+      const car = await CarService.findById(id);
       return res.status(200).json(car);
     } catch (error) {     
-      return res.status(carService.errorCodes(error)).json({
+      return res.status(CarService.errorCodes(error)).json({
         'message': 'bad request',
         'details': [
           {
@@ -72,14 +72,14 @@ class carController {
   async delete(req, res) {
     const carId = req.params._id;
     try {
-      const car = await carService.findById(carId);
+      const car = await CarService.findById(carId);
       if (car === null) {
-        throw new notFound(`ID: ${carId}`);
+        throw new NotFound(`ID: ${carId}`);
       }
-      await carService.delete(carId);
+      await CarService.delete(carId);
       res.status(204).end();
     } catch (error) {
-      return res.status(carService.errorCodes(error)).json({
+      return res.status(CarService.errorCodes(error)).json({
         'message': 'bad request',
         'details': [
           {
@@ -94,14 +94,14 @@ class carController {
     const carId = req.params._id;
     const newData = req.body;
     try {
-      const car = await carService.findId(carId);
+      const car = await CarService.findId(carId);
       if (car === null) {
-        throw new notFound(`ID: ${carId}`);
+        throw new NotFound(`ID: ${carId}`);
       }
-      const updatedcar = await carService.update(carId, newData);
+      const updatedcar = await CarService.update(carId, newData);
       res.status(200).json(updatedcar);
     } catch (error) {
-      return res.status(carService.errorCodes(error)).json({
+      return res.status(CarService.errorCodes(error)).json({
         'message': 'bad request',
         'details': [
           {

@@ -1,6 +1,6 @@
 const peopleSchema = require('../schemas/peopleSchemas');
 
-class peopleRepository {
+class PeopleRepository {
   
   async create(payload) {
     return peopleSchema.create(payload);
@@ -23,4 +23,4 @@ class peopleRepository {
   }
   
 }
-module.exports = new peopleRepository();
+module.exports = new PeopleRepository();

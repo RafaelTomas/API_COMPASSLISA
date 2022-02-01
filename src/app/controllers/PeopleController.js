@@ -1,5 +1,5 @@
-const peopleService = require('../service/peopleService');
-const notFound = require('../../erros/notFound');
+const peopleService = require('../services/peopleService');
+const NotFound = require('../errors/NotFound');
 
 class peopleController {
 
@@ -71,7 +71,7 @@ class peopleController {
     try {
       const people = await peopleService.findById(peopleId);
       if (people === null) {
-        throw new notFound(`ID: ${peopleId}`);
+        throw new NotFound(`ID: ${peopleId}`);
       }
       await peopleService.delete(peopleId);
       res.status(204).end();
@@ -93,7 +93,7 @@ class peopleController {
     try {
       const people = await peopleService.findId(peopleId);
       if (people === null) {
-        throw new notFound(`ID: ${peopleId}`);
+        throw new NotFound(`ID: ${peopleId}`);
       }
       const updatedpeople = await peopleService.update(peopleId, newData);
       res.status(200).json(updatedpeople);

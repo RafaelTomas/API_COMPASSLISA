@@ -1,6 +1,6 @@
 const carSchema = require('../schemas/carSchemas');
 
-class carRepository {
+class CarRepository {
   
   async create(payload) {
     return carSchema.create(payload);
@@ -23,4 +23,4 @@ class carRepository {
   }
   
 }
-module.exports = new carRepository();
+module.exports = new CarRepository();
