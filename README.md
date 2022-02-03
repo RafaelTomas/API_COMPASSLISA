@@ -1,5 +1,5 @@
 <h1 align="center">
-      <a href="#" alt="Delicatesse hi-tech da Dona Maria"> Compassolisa - Alugue seu carro de luxo!</a>
+      <a href="#" alt="Compassolisa - Alugue seu carro de luxo!"> Compassolisa - Alugue seu carro de luxo!</a>
 </h1>
 
 <p align="center">
@@ -9,7 +9,7 @@
  <a href="#-teste-das-rotas">Funcionalidades</a> •  
  <a href="#-tecnologias">Tecnologias</a> • 
  <a href="#-agradecimentos">Agradecimentos</a> • 
- <a href="#-autores">Autores</a> • 
+ <a href="#-autor">Autor</a> • 
  <a href="#-licença">Licença</a>
 </p>
 
@@ -24,15 +24,13 @@
 </h3>
 
 
-
-
 ## Como usar a API ❓
 
 ### Pré-requisitos ❗️
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[MongoDB](https://www.mongodb.com), [Node.js](https://nodejs.org/en/) e pode ser utilizado o [Postman](https://www.postman.com) para testar as rotas,
-não esquecer de criar a pasta ".env' seguindo o exemp.
+[MongoDB](https://www.mongodb.com), [Node.js](https://nodejs.org/en/),
+não esquecer de criar a pasta ".env' seguindo a [.env.example](./enc.example).
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 ### 🎲 Rodando o Back End (servidor)
@@ -52,102 +50,7 @@ $ npm start
 
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000/api/v1> 
 ```
-### 📝 Teste de rotas
 
-> Sugestões para testar as rotas
-
-### REQUEST - (POST)
-> Para cadastrar funcionarios.
-
-> POST - `http://localhost:3000/api/v1/employee`
-```json
-{
-     "name": "Maria da Silva",
-     "cpf": "12312312312",
-     "office": "gerente",
-     "birthday": "21/04/2021"
-
-}
-```
-
-
-### REQUEST - (GET)
-
-> Para listar funcionarios.
-
-> GET - `http://localhost:3000/api/v1/emplyee`
-
-```json
-   //Exemplo de query params
-{
-
-    "name": "silva",
-    "office": "gerente"
-
-}
-
-```
-
-
-### REQUEST - (PUT)
-
-> Para atualizar um funcionario.
-
-> PUT - `http://localhost:3000/api/v1/employee/:employee_id`
-
-```json
-{
- 
-"name": "maria da roberta",
-"office": "funcionario",
-"situation": "deactivate"
-
-
-}
-```
-> Situation só pode ser deactivate ou activate
-
-
-
-### REQUEST - (DELETE)
-
-> Para deletar um funcionario .
-
-> DELETE - ` http://localhost:3000/api/v1/employee/:employee_id`
-
-
-
-### REQUEST - (POST) 
-> Para cadastrar um produto.
-
-> Use: POST - ` http://localhost:3000/api/v1/product`
-
-```json
-{
-"name": "notebook dell",
-"category": "eletronico",
-"price": "12.32",
-"employee_id": "a99e8bf7-fa32-4ae7-8b53-5e00b9d43621"
-}
-```
-
-
->Apenas Gerente ativo pode cadastrar um novo Produto
-
-### REQUEST - (GET) 
-> Para listar os produtos.
-
-> Use: GET - ` http://localhost:3000/api/v1/product`
-
-```json
-{
-"employee_id": "a99e8bf7-fa32-4ae7-8b53-5e00b9d43621",
-"category": "eletronico",
-"name": "dell",
-"min_price": 10.5,
-"max_price":50
-}
-```
 
 ### 🛠 Tecnologias
 
@@ -155,7 +58,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - [mongoose](https://mongoosejs.com)
 - [Node.js](https://nodejs.org/en/)
-- [Postman](https://pt-br.reactjs.org/)
+
 - [Swagger](https://swagger.io)
 - [MongoDb](https://www.mongodb.com)
 
@@ -177,8 +80,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 # 👨‍💻Autor
 
-
-
+- [Rafael Tomás](https://www.linkedin.com/in/rafael-tomas-30b9671a9/)<br>
+ Desafio "FINAL" e ralado mas sempre carregado de muito aprendizado cada "desafio" grato desde já por tudo
 
 # 📝Licença
 
