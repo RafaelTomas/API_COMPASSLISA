@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
   try {
     const peopleSchema = Joi.object({
       nome: Joi.string().min(3).trim().required(),
-      cpf: Joi.string().custom(cpf).unique().required(),
+      cpf: Joi.string().custom(cpf).required(),
       data_nascimento: Joi.date().format('DD/MM/YYYY').max(birthDate).required(),
       email: Joi.string().email({ minDomainSegments: 2 }).required(),
       senha: Joi.string().min(6).pattern(patternsPassword).error(PassswordError).required(),

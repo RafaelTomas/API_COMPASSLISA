@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 const mongoosePaginate = require('mongoose-paginate-v2');
+const SALT_WORK_FACTOR = 10;
+
+
 
 const peopleSchema = mongoose.Schema({
   nome: {
@@ -29,6 +33,12 @@ const peopleSchema = mongoose.Schema({
     type: String,
     required: true
   }
+});
+
+peopleSchema.pre('save', async function save(next) {
+  const data = await bcrypt.hash(this.senha, SALT_WORK_FACTOR);
+  this.senha = data;
+  next();
 });
 
 peopleSchema.plugin(mongoosePaginate);

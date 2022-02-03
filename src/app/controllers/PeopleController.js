@@ -7,7 +7,7 @@ class peopleController {
     try {
       const data = await peopleService.create(req.body);
       return res.status(201).json({
-        'Pessoas': {
+        'Pessoa': {
           '_id': data._id,
           'nome': data.nome,
           'cpf': data.cpf,
@@ -34,7 +34,7 @@ class peopleController {
       const { _id, nome, cpf, data_nascimento, habilitado } = req.query;
       const data = await peopleService.find(_id, nome, cpf, data_nascimento, habilitado );
       return res.status(200).json({
-        'peoples': data
+        'Pessoas': data
       });
     } catch (error) {
       return res.status(peopleService.errorCodes(error)).json({

@@ -1,0 +1,398 @@
+openapi: 3.0.1
+info:
+  title: CompassLisa Api
+  description: Api que gerencia o aluguel de veiculos de luxo.
+  version: 1.0.0
+externalDocs:
+  description: Documentação
+  url: https://github.com/RafaelTomas/API_COMPASSLISA
+servers:
+- url: http://localhost:3000/api/v1
+  description: CompassLisa
+paths:
+  /car:
+    get:
+      summary: Retorna todos os Veiculos.
+      parameters:
+      - name: modelo
+        in: query
+        schema:
+          type: string
+        required: false
+      - name: cor
+        in: query
+        schema:
+          type: string
+        required: false
+      - name: ano
+        in: query
+        schema:
+          type: string
+        required: false
+      - name: quantidadePassageiros
+        in: query
+        schema:
+          type: string
+        required: false
+      responses:
+        200:
+          description: sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  veiculos:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        modelo:
+                          type: string
+                        cor:
+                          type: string
+                        ano: 
+                          type: string
+                        acessorios:
+                          type: string
+                        quantidadePassageiros:
+                          type: string
+                        
+        404:
+          description: Veículo não encontrado
+          content:
+            application/json: 
+              example: "not found"
+    post: 
+      summary: Cria um novo carro.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                modelo:
+                  type: string
+                cor:
+                  type: string
+                ano:
+                  type: string
+                acessorios:
+                  type: string
+                quantidadePassageiros:
+                  type: number
+      responses: 
+        201:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  _id:
+                    type: string
+                  modelo:
+                    type: string
+                  cor:
+                    type: string
+                  ano: 
+                    type: string
+                  acessorios:
+                    type: string
+                  quantidadePassageiros:
+                    type: number
+
+        400:
+          description: Error
+          content:
+            application/json: 
+              example: "não foi possivel cadastrar o veiculo"
+  /car/{_id}:
+    put:
+      summary: Atualiza um veículo.
+      parameters:
+      - name: _id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                modelo:
+                  type: string
+                cor:
+                  type: string
+                ano:
+                  type: string
+                acessorios:
+                  type: string
+                quantidadePassageiros: 
+                  type: number
+      responses: 
+        200:
+          description: Atualizado com sucesso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                   type: string
+                  modelo:
+                    type: string
+                  cor:
+                    type: string
+                  ano: 
+                    type: string
+                  acessorios:
+                    type: string
+                  quantidadePassageiros:
+                    type: number
+        404:
+          description: Veículo não encontrado
+          content:
+            application/json: 
+              example: "não foi possivel atualizarr o veículo"
+        400:
+          description: Body Error
+          content:
+            application/json:
+              example: "Body error"
+    delete:
+      summary: apagar um veiculo.
+      parameters:
+      - name: _id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses: 
+        204:
+          description: Excluido com sucesso
+        404:
+          description: Veiculo não encontrado
+          content:
+            application/json: 
+              example: "não foi possivel Apagar o funcionário"
+        400:
+          description: Body Error
+          content:
+            application/json:
+              example: "Body error"
+  /people:
+    post:
+      summary: Cria uma nova pessoa.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                cpf:
+                  type: string
+                data_nascimento:
+                  type: string
+                email:
+                  type: string
+                senha:
+                  type: string
+                habilitado:
+                  type: string
+      responses: 
+        201:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  name:
+                    type: string
+                  cpf:
+                    type: string
+                  data_nascimento:
+                    type: string
+                  email:
+                    type: number
+                  senha:
+                    type: string
+                  habilitado:
+                    type: string
+        400:
+          description: Error
+          content:
+            application/json: 
+              example: "não foi possivel cadastrar a pessoa"
+    get:
+      summary: Retorna todas as pessoas.
+      parameters:
+      - name: nome
+        in: query
+        schema:
+          type: string
+        required: false
+      - name: cpf
+        in: query
+        schema:
+          type: string
+        required: false
+      - name: data_nascimento
+        in: query
+        schema:
+          type: string
+        required: false
+      - name: email
+        in: query
+        schema:
+          type: string
+        required: false
+      - name: habilitado
+        in: query
+        schema:
+          type: string
+        required: false
+      responses:
+        200:
+          description: sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pessoas:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        nome:
+                          type: string
+                        cpf:
+                          type: string
+                        data_nascimento: 
+                          type: string
+                        email:
+                          type: string
+                        senha:
+                          type: string
+                        habilitado:
+                          type: string
+        404:
+          description: pessoa não encontrado
+          content:
+            application/json: 
+              example: "not found"
+  /people/{_id}:
+    put:
+      summary: Atualiza um veículo.
+      parameters:
+      - name: _id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                modelo:
+                  type: string
+                cor:
+                  type: string
+                ano:
+                  type: string
+                acessorios:
+                  type: string
+                quantidadePassageiros: 
+                  type: number
+      responses: 
+        200:
+          description: Atualizado com sucesso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                  modelo:
+                    type: string
+                  cor:
+                    type: string
+                  ano: 
+                    type: string
+                  acessorios:
+                    type: string
+                  quantidadePassageiros:
+                    type: number
+        404:
+          description: Veículo não encontrado
+          content:
+            application/json: 
+              example: "não foi possivel atualizarr o veículo"
+        400:
+          description: Body Error
+          content:
+            application/json:
+              example: "Body error"   
+    delete:
+      summary: apagar pessoa.
+      parameters:
+      - name: _id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses: 
+        204:
+          description: Excluido com sucesso
+        404:
+          description: Pessoa não encontrado
+          content:
+            application/json: 
+              example: "não foi possivel apagar a pessoa"
+        400:
+          description: Body Error
+          content:
+            application/json:
+              example: "Body error"
+  /authenticate:
+    post:
+      summary: Cria uma autenticação.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                nome:
+                  type: string
+                email:
+                  type: string
+                token:
+                  type: string
+                habilitado:
+                  type: string
+      responses:
+       204:
+          description: Criado com sucesso 
+       404:
+           description: não foi possivel criar
+           content:
+              application/json: 
+                example: "não foi possivel criar"              

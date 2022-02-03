@@ -1,20 +1,19 @@
-const peopleSchema = require('../schemas/peopleSchemas');
+const authenticate = require('../services/AuthenticateService');
 const bcrypt = require('bcryptjs');
 const generateToken = require('../helpers/generateToken');
 
 class AuthenticateController {
   async authenticate (req, res) {
     const { email, senha } = req.body;
-    const user = await peopleSchema.findOne({ email }).select('+senha');
-
+    const user = await authenticate.find({email});
+  
     if (!user) {
-      return res.status(400).json({ error: 'user not found' });
+      return res.status(400).json({ error: 'usuario não encontrado' });
     }
-
-    if (!await bcrypt.compare(senha, user.senha)) {
-      return res.status(400).json({ error: 'Invalid password' });
+    if (!await bcrypt.compareSync(senha, user.senha)) {
+      return res.status(400).json({ error: 'Senha invalida' });
     }
-
+   
     user.senha = undefined;
 
     res.send({user,token: generateToken({ id: user.id })});

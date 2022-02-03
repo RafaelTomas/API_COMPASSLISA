@@ -4,7 +4,7 @@
 
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
- <a href="">Documentação</a> •
+ <a href="./CompassLisa_Documentation.yml">Documentação</a> •
  <a href="#-como-usar-a-API">Como usar a API</a> •
  <a href="#-teste-das-rotas">Funcionalidades</a> •  
  <a href="#-tecnologias">Tecnologias</a> • 
