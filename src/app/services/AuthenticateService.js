@@ -1,8 +1,8 @@
 const Authenticate = require('../repositorys/Authenticate');
 
 class AuthenticateService {
-  async find(authenticate) {
-    const data = await Authenticate.find(authenticate);
+  async find(payload) {
+    const data = await Authenticate.find(payload);
     return data;
   }
 }

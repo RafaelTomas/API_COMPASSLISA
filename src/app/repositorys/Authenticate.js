@@ -1,8 +1,8 @@
 const peopleSchema = require('../schemas/peopleSchemas');
 
 class AuthenticateRepository {
-  async find(authenticate) {
-    const data = await peopleSchema.findOne(authenticate).select('+senha');
+  async find(payload) {
+    const data = await peopleSchema.findOne(payload).select('+senha');
     return data;
   }
 }
