@@ -1,6 +1,7 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const InvalidBody = require('../../errors/InvalidBody');
 const validateCPF = require('../../helpers/cpf');
+const yesOrNo  = require('../../helpers/enum');
 
 const patternsPassword =/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/;
 const PassswordError = new Error('Password must be strong. At least one upper case alphabet. At least one lower case alphabet. At least one digit. At least one special character. Minimum six in length');
@@ -23,7 +24,7 @@ module.exports = async (req, res, next) => {
       data_nascimento: Joi.date().format('DD/MM/YYYY').max(birthDate).required(),
       email: Joi.string().email({ minDomainSegments: 2 }).required(),
       senha: Joi.string().min(6).pattern(patternsPassword).error(PassswordError).required(),
-      habilitado: Joi.string().valid('sim', 'não').required()
+      habilitado: Joi.string().valid(yesOrNo).required()
     });
 
     const { error } = await peopleSchema.validate(req.body, { abortEarl: true });
