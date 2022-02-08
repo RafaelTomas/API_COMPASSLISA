@@ -1,19 +1,16 @@
 const CarRepository = require('../repositorys/CarRepository');
-const NotFound = require('../errors/NotFound.js');
+const NotFound = require('../errors/NotFound');
 const InvalidBody = require('../errors/InvalidBody');
 
 class CarService {
-
   async create(payload) {
     const data = await CarRepository.create(payload);
     return data;
-
   }
 
   async find(payload) {
     const data = await CarRepository.findall(payload);
-    return data ;
-  
+    return data;
   }
 
   async findById(id) {
@@ -41,7 +38,6 @@ class CarService {
     }
 
     return status;
-
   }
 }
 

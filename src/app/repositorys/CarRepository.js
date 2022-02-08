@@ -1,12 +1,11 @@
 const carSchema = require('../schemas/carSchemas');
 
 class CarRepository {
-
   async create(payload) {
     return carSchema.create(payload);
   }
 
-  async findall(payload) { 
+  async findall(payload) {
     const myCustomLabels = {
       totalDocs: 'total',
       docs: 'Veiculos',
@@ -17,15 +16,14 @@ class CarRepository {
       pagingCounter: false,
       meta: false,
       hasPrevPage: false,
-      hasNextPage: false
+      hasNextPage: false,
     };
     const options = {
       page: 1,
       limit: 100,
-      customLabels: myCustomLabels
+      customLabels: myCustomLabels,
     };
     return carSchema.paginate(payload, options, {});
-    
   }
 
   async findId(id) {
@@ -39,6 +37,5 @@ class CarRepository {
   async update(id) {
     return carSchema.updateOne(id);
   }
-
 }
 module.exports = new CarRepository();

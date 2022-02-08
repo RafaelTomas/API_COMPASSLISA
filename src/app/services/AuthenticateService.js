@@ -7,4 +7,4 @@ class AuthenticateService {
   }
 }
 
-module.exports= new AuthenticateService();
+module.exports = new AuthenticateService();

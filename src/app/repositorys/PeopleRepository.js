@@ -1,7 +1,6 @@
 const peopleSchema = require('../schemas/peopleSchemas');
 
 class PeopleRepository {
-  
   async create(payload) {
     return peopleSchema.create(payload);
   }
@@ -17,16 +16,16 @@ class PeopleRepository {
       pagingCounter: false,
       meta: false,
       hasPrevPage: false,
-      hasNextPage: false
+      hasNextPage: false,
     };
     const options = {
       page: 1,
       limit: 100,
-      customLabels: myCustomLabels
+      customLabels: myCustomLabels,
     };
     return peopleSchema.paginate(payload, options, {});
   }
- 
+
   async findId(id) {
     return peopleSchema.findOne(id);
   }
@@ -38,6 +37,5 @@ class PeopleRepository {
   async update(id) {
     return peopleSchema.updateOne(id);
   }
-  
 }
 module.exports = new PeopleRepository();
