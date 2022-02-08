@@ -10,7 +10,7 @@ class peopleController {
           _id: data.id,
           nome: data.nome,
           cpf: data.cpf,
-          data_nascimento: data.dataNascimento,
+          data_nascimento: data.data_nascimento,
           email: data.email,
           senha: data.senha,
           habilitado: data.habilitado,
@@ -110,4 +110,4 @@ class peopleController {
   }
 }
 
-module.exports = new PeopleController();
+module.exports = new peopleController();

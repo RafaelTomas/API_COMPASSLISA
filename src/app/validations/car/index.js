@@ -1,7 +1,7 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const InvalidBody = require('../../errors/InvalidBody');
 
-const description = Joi.object({ descricao: Joi.string().required() });
+
 
 module.exports = async (req, res, next) => {
   try {
@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
       cor: Joi.string().min(3).trim().required(),
       ano: Joi.date().max('now').min('1950').raw()
         .required(),
-      acessorios: Joi.array().min(1).items(description).unique()
+      acessorios: Joi.array().min(1).items().unique()
         .required(),
       quantidadePassageiros: Joi.number().min(2).required(),
     });

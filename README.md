@@ -58,7 +58,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - [mongoose](https://mongoosejs.com)
 - [Node.js](https://nodejs.org/en/)
-
 - [Swagger](https://swagger.io)
 - [MongoDb](https://www.mongodb.com)
 
