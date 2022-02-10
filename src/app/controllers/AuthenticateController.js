@@ -8,7 +8,7 @@ class AuthenticateController {
     const user = await authenticateService.find({ email });
 
     if (!user) {
-      return res.status(400).json({ error: 'usuario não encontrado' });
+      return res.status(404).json({ error: 'usuario não encontrado' });
     }
     if (!(await bcrypt.compareSync(senha, user.senha))) {
       return res.status(400).json({ error: 'Senha invalida' });

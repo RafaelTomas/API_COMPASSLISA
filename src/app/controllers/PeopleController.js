@@ -70,7 +70,7 @@ class peopleController {
     const peopleId = req.params.id;
     try {
       const people = await peopleService.findById(peopleId);
-      if (people === null) {
+      if (!people) {
         throw new NotFound(`ID: ${peopleId}`);
       }
       await peopleService.delete(peopleId);

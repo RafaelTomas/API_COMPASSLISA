@@ -48,6 +48,9 @@ $ npm install
 # Execute a aplicação 
 $ npm start
 
+# Execute a aplicação em modo de produção 
+$ npm run dev
+
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000/api/v1> 
 ```
 

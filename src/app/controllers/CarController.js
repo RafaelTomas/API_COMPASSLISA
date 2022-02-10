@@ -17,10 +17,10 @@ class CarController {
       });
     } catch (error) {
       return res.status(CarService.errorCodes(error)).json({
-        message: 'bad request',
         details: [
           {
-            message: error.message,
+            description: error,
+            message,
           },
         ],
       });
@@ -69,7 +69,7 @@ class CarController {
     const carId = req.params.id;
     try {
       const car = await CarService.findById(carId);
-      if (car === null) {
+      if (!car) {
         throw new NotFound(`ID: ${carId}`);
       }
       await CarService.delete(carId);
@@ -91,7 +91,7 @@ class CarController {
     const newData = req.body;
     try {
       const car = await CarService.findId(carId);
-      if (car === null) {
+      if (!car) {
         throw new NotFound(`ID: ${carId}`);
       }
       const updatedcar = await CarService.update(carId, newData);

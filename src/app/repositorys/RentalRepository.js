@@ -1,4 +1,4 @@
-const RentalSchema = require('../schemas/rentalSchemas');
+const RentalSchema = require('../schemas/rentalSchema');
 
 class RentalRepository {
   async create(payload) {
@@ -23,7 +23,7 @@ class RentalRepository {
       limit: 100,
       customLabels: myCustomLabels,
     };
-    return RentalSchema.paginate(payload, options, {});
+    return conRentalSchema.paginate(payload, options, {});
   }
 
   async findId(id) {

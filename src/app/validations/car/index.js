@@ -1,8 +1,6 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const InvalidBody = require('../../errors/InvalidBody');
 
-
-
 module.exports = async (req, res, next) => {
   try {
     const carSchema = Joi.object({

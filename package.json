@@ -4,7 +4,7 @@
   "description": "Compassolisa - Alugue seu carro de luxo!",
   "main": "./src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
     "lint": "eslint . --fix"
@@ -22,7 +22,9 @@
   "homepage": "https://github.com/RafaelTomas/API_COMPASSLISA#readme",
   "dependencies": {
     "@joi/date": "^2.1.0",
+    "axios": "^0.25.0",
     "bcryptjs": "^2.4.3",
+    "busca-cep": "^0.5.0",
     "dotenv": "^14.3.0",
     "express": "^4.17.2",
     "joi": "^17.5.0",

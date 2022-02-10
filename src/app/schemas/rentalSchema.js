@@ -8,22 +8,19 @@ const rentalSchema = mongoose.Schema({
   },
   cnpj: {
     type: String,
+    unique: true,
     required: true,
   },
   atividades: {
     type: String,
     required: true,
   },
-  endereço: {
-    cep: String,
-    number: Number,
-    isFilial: Boolean,
+  endereco: {
+    type: Array,
+    cep: { type: String, required: true },
+    number: { type: Number, required: true },
+    isFilial: { type: Boolean, required: true },
     complemento: { type: String, required: false },
-    required: true,
-  },
-  quantidadePassageiros: {
-    type: Number,
-    required: true,
   },
 });
 
