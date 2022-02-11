@@ -29,10 +29,8 @@ class CarController {
 
   async find(req, res) {
     try {
-      const {
-        modelo, cor, ano, acessorios, quantidadePassageiros,
-      } = req.query;
-      const data = await CarService.find(modelo, cor, ano, acessorios, quantidadePassageiros);
+      const payload = req.query;
+      const data = await CarService.find(payload);
       return res.status(200).json({
         cars: data,
       });
