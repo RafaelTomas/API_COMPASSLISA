@@ -17,6 +17,7 @@ describe('Test car controller', () => {
       quantidadePassageiros: 5,
     });
   });
+  console.log(car);
 
   afterAll(async () => {
     mongoose.connection.close();
@@ -24,7 +25,7 @@ describe('Test car controller', () => {
 
   it('create car', async () => {
     const res = await request(app).post('/api/v1/car').send({
-      modelo: 'GM S10 2.5',
+      modelo: 'GOL',
       cor: 'branco',
       ano: '2021',
       acessorios: [

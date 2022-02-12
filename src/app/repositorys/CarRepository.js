@@ -37,5 +37,12 @@ class CarRepository {
   async update(id) {
     return carSchema.updateOne(id);
   }
+
+  async updateitem(payload, id, acessorio_id) {
+    const opts = { new: true, upsert: true };
+    const conditions = { _id: id, acessoriosId: acessorio_id };
+    const update = { $set: { 'acessorios.$.descricao': payload.descricao } };
+    return carSchema.findByIdAndUpdate(conditions, update, opts);
+  }
 }
 module.exports = new CarRepository();

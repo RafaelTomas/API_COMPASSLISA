@@ -27,11 +27,9 @@ class RentalController {
   }
 
   async find(req, res) {
+    const payload = req.query;
     try {
-      const {
-        nome, cnpj, atividades, acessorios,
-      } = req.query;
-      const data = await RentalService.find(nome, cnpj, atividades, acessorios);
+      const data = await RentalService.find(payload);
       return res.status(200).json({
         Locadoras: data,
       });

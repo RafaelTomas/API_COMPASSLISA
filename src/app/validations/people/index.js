@@ -1,7 +1,6 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const InvalidBody = require('../../errors/InvalidBody');
 const validateCPF = require('../../helpers/cpf');
-const yesOrNo = require('../../helpers/enum');
 
 const patternsPassword = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/;
 const PassswordError = new Error(
@@ -26,7 +25,7 @@ module.exports = async (req, res, next) => {
       email: Joi.string().email({ minDomainSegments: 2 }).required(),
       senha: Joi.string().min(6).pattern(patternsPassword).error(PassswordError)
         .required(),
-      habilitado: Joi.string().valid(yesOrNo).required(),
+      habilitado: Joi.string().valid('sim', 'não').required(),
     });
 
     const { error } = await peopleSchema.validate(req.body, { abortEarl: true });

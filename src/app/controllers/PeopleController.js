@@ -29,11 +29,9 @@ class peopleController {
   }
 
   async find(req, res) {
+    const payload = req.query;
     try {
-      const {
-        _id, nome, cpf, data_nascimento, habilitado,
-      } = req.query;
-      const data = await peopleService.find(_id, nome, cpf, data_nascimento, habilitado);
+      const data = await peopleService.find(payload);
       return res.status(200).json({
         Pessoas: data,
       });

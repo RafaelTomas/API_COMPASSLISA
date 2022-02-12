@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const mongoosePaginate = require('mongoose-paginate-v2');
-const Enum = require('../helpers/enum');
 
 const SALT_WORK_FACTOR = 10;
 
@@ -31,7 +30,7 @@ const peopleSchema = mongoose.Schema({
   },
   habilitado: {
     type: String,
-    enum: Enum.yesOrNo,
+    enum: ['sim', 'não'],
     required: true,
   },
 });

@@ -28,6 +28,11 @@ class CarService {
     return data;
   }
 
+  async updateitem(id, acessorio_id, payload) {
+    const data = await CarRepository.updateitem(id, acessorio_id, payload);
+    return data;
+  }
+
   errorCodes(erro) {
     let status = 500;
     if (erro instanceof NotFound) {
