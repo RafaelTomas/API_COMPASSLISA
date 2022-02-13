@@ -10,8 +10,7 @@ const CNPJ = (cnpj, helper) => {
 };
 
 const enderecoValidations = Joi.object({
-  cep: Joi.string().length(8).trim()
-    .required(),
+  cep: Joi.string().length(8).trim().required(),
   number: Joi.string().trim().required(),
   complemento: Joi.string().trim(),
   isFilial: Joi.boolean().required(),
@@ -23,17 +22,8 @@ module.exports = async (req, res, next) => {
       nome: Joi.string().min(3).trim().required(),
       cnpj: Joi.string().custom(CNPJ).required(),
       atividades: Joi.string().min(3).trim().required(),
-      endereco: Joi.array().min(1)
-        .unique('cep')
-        .items(
-          Joi.object({
-            cep: Joi.string().min(8).max(8).trim()
-              .required(),
-            number: Joi.string().trim().required(),
-            complemento: Joi.string().trim(),
-            isFilial: Joi.boolean().required(),
-          }),
-        ),
+      endereco: Joi.array().min(1).unique('cep').items(enderecoValidations)
+        .required(),
     });
 
     const { error } = await rentalSchema.validate(req.body, { abortEarl: true });

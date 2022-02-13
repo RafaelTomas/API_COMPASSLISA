@@ -103,7 +103,7 @@ class CarController {
         ],
       });
     }
-  };
+  }
 
   async patch(req, res) {
     const { id, acessorio_id } = req.params;
