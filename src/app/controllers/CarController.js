@@ -19,8 +19,7 @@ class CarController {
       return res.status(CarService.errorCodes(error)).json({
         details: [
           {
-            description: error,
-            message,
+            description: error.message,
           },
         ],
       });

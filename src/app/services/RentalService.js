@@ -1,16 +1,32 @@
 const RentalRepository = require('../repositorys/RentalRepository');
+const ViaCep = require('../repositorys/viaCepRepository');
 const NotFound = require('../errors/NotFound');
 const InvalidBody = require('../errors/InvalidBody');
 
 class RentalService {
-  async create(payload) {
-    const data = await RentalRepository.create(payload);
-    return data;
+  async create(payload, data) {
+    for (let i = 0; i < payload.endereco.length; i++) {
+      const ceps = payload.endereco;
+      const result = ceps[i];
+      const data = await ViaCep.find(result.cep);
+      const {
+        cep, logradouro, complemento, bairro, localidade, uf,
+      } = data;
+      result.cep = cep;
+      result.logradouro = logradouro;
+      result.complemento = complemento;
+      result.bairro = bairro;
+      result.localidade = localidade;
+      result.uf = uf;
+    }
+
+    const result = await RentalRepository.create(payload, data);
+
+    return result;
   }
 
   async find(payload) {
     const data = await RentalRepository.findall(payload);
-    console.log(payload);
     return data;
   }
 

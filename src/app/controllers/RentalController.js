@@ -1,20 +1,12 @@
-const { path } = require('express/lib/application');
 const RentalService = require('../services/RentalService');
 const NotFound = require('../errors/NotFound');
 
 class RentalController {
   async create(req, res) {
+    const payload = req.body;
     try {
-      const data = await RentalService.create(req.body);
-      return res.status(201).json({
-        Locadoras: {
-          id: data.id,
-          nome: data.nome,
-          cnpj: data.cnpj,
-          atividades: data.atividades,
-          endereco: data.endereco,
-        },
-      });
+      const result = await RentalService.create(payload);
+      return res.status(201).json(result);
     } catch (error) {
       return res.status(400).json({
         details: [

@@ -1,8 +1,8 @@
 const RentalSchema = require('../schemas/rentalSchema');
 
 class RentalRepository {
-  async create(payload) {
-    return RentalSchema.create(payload);
+  async create(payload, data) {
+    return RentalSchema.create(payload, data);
   }
 
   async findall(payload) {
@@ -23,7 +23,7 @@ class RentalRepository {
       limit: 100,
       customLabels: myCustomLabels,
     };
-    return conRentalSchema.paginate(payload, options, {});
+    return RentalSchema.paginate(payload, options, {});
   }
 
   async findId(id) {

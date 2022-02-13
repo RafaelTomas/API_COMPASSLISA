@@ -29,7 +29,7 @@ class CarService {
   }
 
   async updateitem(id, acessorio_id, payload) {
-    const data = await CarRepository.updateitem(id, acessorio_id, payload);
+    const data = await CarRepository.updateItem(id, acessorio_id, payload);
     return data;
   }
 
