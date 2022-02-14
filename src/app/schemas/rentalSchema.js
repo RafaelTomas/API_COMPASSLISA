@@ -25,7 +25,6 @@ const rentalSchema = mongoose.Schema({
       bairro: { type: String, required: false },
       localidade: { type: String, required: false },
       uf: { type: String, required: false },
-      _id: false,
     },
   ],
 });
