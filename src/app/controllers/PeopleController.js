@@ -18,10 +18,10 @@ class peopleController {
       });
     } catch (error) {
       return res.status(peopleService.errorCodes(error)).json({
-        message: 'bad request',
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -37,10 +37,10 @@ class peopleController {
       });
     } catch (error) {
       return res.status(peopleService.errorCodes(error)).json({
-        message: 'bad request',
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -54,10 +54,10 @@ class peopleController {
       return res.status(200).json(people);
     } catch (error) {
       return res.status(peopleService.errorCodes(error)).json({
-        message: 'bad request',
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -75,10 +75,10 @@ class peopleController {
       res.status(204).end();
     } catch (error) {
       return res.status(peopleService.errorCodes(error)).json({
-        message: 'bad request',
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -97,10 +97,10 @@ class peopleController {
       res.status(200).json(updatedpeople);
     } catch (error) {
       return res.status(peopleService.errorCodes(error)).json({
-        message: 'bad request',
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });

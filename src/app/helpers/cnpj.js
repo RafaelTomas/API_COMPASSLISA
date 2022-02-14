@@ -1,10 +1,7 @@
 function validateCNPJ(cnpj) {
   cnpj = cnpj.replace(/[^\d]+/g, '');
-
   if (cnpj === '') return false;
-
   if (cnpj.length !== 14) { return false; }
-
   if (cnpj === '00000000000000'
         || cnpj === '11111111111111'
         || cnpj === '22222222222222'
@@ -15,7 +12,6 @@ function validateCNPJ(cnpj) {
         || cnpj === '77777777777777'
         || cnpj === '88888888888888'
         || cnpj === '99999999999999') { return false; }
-
   let tamanho = cnpj.length - 2;
   let numeros = cnpj.substring(0, tamanho);
   const digitos = cnpj.substring(tamanho);

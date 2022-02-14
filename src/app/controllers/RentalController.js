@@ -11,7 +11,8 @@ class RentalController {
       return res.status(400).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -27,10 +28,10 @@ class RentalController {
       });
     } catch (error) {
       return res.status(RentalService.errorCodes(error)).json({
-        message: 'bad request',
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -44,10 +45,10 @@ class RentalController {
       return res.status(200).json(Rental);
     } catch (error) {
       return res.status(RentalService.errorCodes(error)).json({
-        message: 'bad request',
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -65,10 +66,10 @@ class RentalController {
       res.status(204).end();
     } catch (error) {
       return res.status(RentalService.errorCodes(error)).json({
-        message: 'bad request',
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -87,10 +88,10 @@ class RentalController {
       res.status(200).json(updatedRental);
     } catch (error) {
       return res.status(RentalService.errorCodes(error)).json({
-        message: 'bad request',
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
