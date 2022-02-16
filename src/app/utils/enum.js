@@ -1,1 +1,4 @@
-exports.yesOrNo = ['sim', 'não'];
+exports.yesOrNo = [
+  'sim',
+  'não',
+];

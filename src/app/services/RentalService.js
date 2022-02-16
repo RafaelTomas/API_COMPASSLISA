@@ -44,18 +44,6 @@ class RentalService {
     const data = await RentalRepository.update(id);
     return data;
   }
-
-  errorCodes(erro) {
-    let status = 500;
-    if (erro instanceof NotFound) {
-      status = 404;
-    }
-    if (erro instanceof InvalidBody) {
-      status = 400;
-    }
-
-    return status;
-  }
 }
 
 module.exports = new RentalService();

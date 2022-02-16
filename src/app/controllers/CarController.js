@@ -1,5 +1,6 @@
 const CarService = require('../services/CarService');
 const NotFound = require('../errors/NotFound');
+const errorCodes = require('../utils/errorCodes');
 
 class CarController {
   async create(req, res) {
@@ -17,7 +18,7 @@ class CarController {
         },
       });
     } catch (error) {
-      return res.status(CarService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
@@ -54,7 +55,7 @@ class CarController {
       const car = await CarService.findById(id);
       return res.status(200).json(car);
     } catch (error) {
-      return res.status(CarService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
