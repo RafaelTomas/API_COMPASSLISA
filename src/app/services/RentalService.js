@@ -1,7 +1,5 @@
 const RentalRepository = require('../repositorys/RentalRepository');
 const ViaCep = require('../repositorys/ViaCep/viaCepRepository');
-const NotFound = require('../errors/NotFound');
-const InvalidBody = require('../errors/InvalidBody');
 
 class RentalService {
   async create(payload) {

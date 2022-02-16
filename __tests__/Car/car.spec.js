@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const request = require('supertest');
-const app = require('../src/app');
-const CarService = require('../src/app/services/CarService');
+const app = require('../../src/app');
+const CarService = require('../../src/app/services/CarService');
 
 const car = {};
 
@@ -17,7 +17,7 @@ describe('Test car controller', () => {
       quantidadePassageiros: 5,
     });
   });
-  console.log(car);
+ 
 
   afterAll(async () => {
     mongoose.connection.close();

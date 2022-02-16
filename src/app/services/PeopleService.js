@@ -1,6 +1,4 @@
 const PeopleRepository = require('../repositorys/PeopleRepository');
-const InvalidBody = require('../errors/InvalidBody');
-const NotFound = require('../errors/NotFound');
 
 class PeopleService {
   async create(payload) {

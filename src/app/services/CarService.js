@@ -1,6 +1,4 @@
 const CarRepository = require('../repositorys/CarRepository');
-const NotFound = require('../errors/NotFound');
-const InvalidBody = require('../errors/InvalidBody');
 
 class CarService {
   async create(payload) {
