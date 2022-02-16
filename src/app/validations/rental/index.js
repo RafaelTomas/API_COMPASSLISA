@@ -1,6 +1,6 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const InvalidBody = require('../../errors/InvalidBody');
-const validateCNPJ = require('../../helpers/cnpj');
+const validateCNPJ = require('../../utils/cnpj');
 
 const CNPJ = (cnpj, helper) => {
   if (validateCNPJ(cnpj)) {

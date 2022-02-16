@@ -1,0 +1,1 @@
+exports.yesOrNo = ['sim', 'não'];

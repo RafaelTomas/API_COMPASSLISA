@@ -6,17 +6,6 @@ const peopleService = require('../src/app/services/PeopleService');
 const people = {};
 
 describe('Test people controller', () => {
-  beforeAll(async () => {
-    people.b1 = await peopleService.create({
-      nome: 'joaozinho ciclano',
-      cpf: '131.147.860-49',
-      data_nascimento: '03/03/2021',
-      email: 'joazinho@email.com',
-      senha: 'Joao@12',
-      habilitado: 'sim',
-    });
-  });
-
   afterAll(async () => {
     mongoose.connection.close();
   });
@@ -39,7 +28,7 @@ describe('Test people controller', () => {
   });
 
   it('update people', async () => {
-    const res = await request(app).put(`/api/v1/people/${people.b1._id}`).send(
+    const res = await request(app).put(`/api/v1/people/${b1._id}`).send(
       {
         nome: 'Rafael Tomás',
         cpf: '131.147.860-49',
