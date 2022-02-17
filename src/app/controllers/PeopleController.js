@@ -1,5 +1,6 @@
 const peopleService = require('../services/PeopleService');
 const NotFound = require('../errors/NotFound');
+const errorCodes = require('../utils/errorCodes')
 
 class peopleController {
   async create(req, res) {
@@ -17,7 +18,7 @@ class peopleController {
         },
       });
     } catch (error) {
-      return res.status(peopleService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
@@ -36,7 +37,7 @@ class peopleController {
         Pessoas: data,
       });
     } catch (error) {
-      return res.status(peopleService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
@@ -53,7 +54,7 @@ class peopleController {
       const people = await peopleService.findById(id);
       return res.status(200).json(people);
     } catch (error) {
-      return res.status(peopleService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
@@ -74,7 +75,7 @@ class peopleController {
       await peopleService.delete(peopleId);
       res.status(204).end();
     } catch (error) {
-      return res.status(peopleService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
@@ -96,7 +97,7 @@ class peopleController {
       const updatedpeople = await peopleService.update(peopleId, newData);
       res.status(200).json(updatedpeople);
     } catch (error) {
-      return res.status(peopleService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',

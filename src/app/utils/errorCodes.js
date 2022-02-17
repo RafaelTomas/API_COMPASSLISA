@@ -1,12 +1,12 @@
 const InvalidBody = require('../errors/InvalidBody');
 const NotFound = require('../errors/NotFound');
 
-function errorCodes(erro) {
+function errorCodes(error) {
   let status = 500;
-  if (erro instanceof NotFound) {
+  if (error instanceof NotFound) {
     status = 404;
   };
-  if (erro instanceof InvalidBody) {
+  if (error instanceof InvalidBody) {
     status = 400;
   };
   return status;

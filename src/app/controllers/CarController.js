@@ -38,7 +38,7 @@ class CarController {
         cars: data,
       });
     } catch (error) {
-      return res.status(CarService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
@@ -76,7 +76,7 @@ class CarController {
       await CarService.delete(carId);
       res.status(204).end();
     } catch (error) {
-      return res.status(CarService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
@@ -98,7 +98,7 @@ class CarController {
       const updatedcar = await CarService.update(carId, newData);
       res.status(200).json(updatedcar);
     } catch (error) {
-      return res.status(CarService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
@@ -116,7 +116,7 @@ class CarController {
       const updateItem = await CarService.updateitem(id, acessorio_id, payload);
       res.status(200).json(updateItem);
     } catch (error) {
-      return res.status(CarService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
