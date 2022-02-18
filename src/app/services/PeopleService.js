@@ -23,8 +23,6 @@ class PeopleService {
     const data = await PeopleRepository.update(id);
     return data;
   }
-
-
 }
 
 module.exports = new PeopleService();

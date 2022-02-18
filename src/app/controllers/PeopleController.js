@@ -1,12 +1,12 @@
 const peopleService = require('../services/PeopleService');
 const NotFound = require('../errors/NotFound');
-const errorCodes = require('../utils/errorCodes')
+const errorCodes = require('../utils/errorCodes');
 
 class peopleController {
   async create(req, res) {
     try {
       const data = await peopleService.create(req.body);
-      return res.status(201).json({
+      return res.status(200).json({
         Pessoa: {
           _id: data.id,
           nome: data.nome,
@@ -16,7 +16,7 @@ class peopleController {
           senha: data.senha,
           habilitado: data.habilitado,
         },
-      });
+      }).send();
     } catch (error) {
       return res.status(errorCodes(error)).json({
         details: [

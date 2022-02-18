@@ -5,10 +5,10 @@ function errorCodes(error) {
   let status = 500;
   if (error instanceof NotFound) {
     status = 404;
-  };
+  }
   if (error instanceof InvalidBody) {
     status = 400;
-  };
+  }
   return status;
 }
 

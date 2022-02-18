@@ -30,8 +30,6 @@ class CarService {
     const data = await CarRepository.updateItem(id, acessorio_id, payload);
     return data;
   }
-
- 
 }
 
 module.exports = new CarService();
