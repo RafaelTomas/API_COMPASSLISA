@@ -12,4 +12,4 @@ function errorCodes(error) {
   return status;
 }
 
-module.exports = errorCodes();
+module.exports = errorCodes;

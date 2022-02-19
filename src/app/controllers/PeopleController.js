@@ -90,7 +90,7 @@ class peopleController {
     const peopleId = req.params.id;
     const newData = req.body;
     try {
-      const people = await peopleService.findId(peopleId);
+      const people = await peopleService.findById(peopleId);
       if (people === null) {
         throw new NotFound(`ID: ${peopleId}`);
       }

@@ -15,7 +15,7 @@ module.exports = async (req, res, next) => {
       nome: Joi.string().min(3).trim().required(),
       cpf: Joi.string()
         .custom((cpf, helper) => {
-          if (validateCPF(cpf)) {
+          if (!validateCPF(cpf)) {
             return helper.message('insert valid cpf');
           }
           return true;

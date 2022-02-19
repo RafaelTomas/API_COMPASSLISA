@@ -1,5 +1,7 @@
 const RentalService = require('../services/RentalService');
 const NotFound = require('../errors/NotFound');
+const errorCodes = require('../utils/errorCodes');
+
 
 class RentalController {
   async create(req, res) {
@@ -27,7 +29,7 @@ class RentalController {
         Locadoras: data,
       });
     } catch (error) {
-      return res.status(RentalService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
@@ -44,7 +46,7 @@ class RentalController {
       const Rental = await RentalService.findById(id);
       return res.status(200).json(Rental);
     } catch (error) {
-      return res.status(RentalService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
@@ -65,7 +67,7 @@ class RentalController {
       await RentalService.delete(RentalId);
       res.status(204).end();
     } catch (error) {
-      return res.status(RentalService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
@@ -80,7 +82,7 @@ class RentalController {
     const RentalId = req.params.id;
     const newData = req.body;
     try {
-      const rental = await RentalService.findId(RentalId);
+      const rental = await RentalService.findById(RentalId);
       if (!rental) {
         throw new NotFound(`ID: ${RentalId}`);
       }

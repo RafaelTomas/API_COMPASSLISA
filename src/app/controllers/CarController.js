@@ -91,7 +91,7 @@ class CarController {
     const carId = req.params.id;
     const newData = req.payload;
     try {
-      const car = await CarService.findId(carId);
+      const car = await CarService.findById(carId);
       if (!car) {
         throw new NotFound(`ID: ${carId}`);
       }
