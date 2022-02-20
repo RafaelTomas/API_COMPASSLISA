@@ -2,7 +2,6 @@ const RentalService = require('../services/RentalService');
 const NotFound = require('../errors/NotFound');
 const errorCodes = require('../utils/errorCodes');
 
-
 class RentalController {
   async create(req, res) {
     const payload = req.body;
