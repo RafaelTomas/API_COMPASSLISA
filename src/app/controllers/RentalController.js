@@ -88,7 +88,7 @@ class RentalController {
       const updatedRental = await RentalService.update(RentalId, newData);
       res.status(200).json(updatedRental);
     } catch (error) {
-      return res.status(RentalService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
             description: 'bad request',
