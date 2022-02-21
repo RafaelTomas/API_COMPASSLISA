@@ -34,7 +34,7 @@ describe('PEOPLE', () => {
   });
 
   it('PUT - UPDATE', async () => {
-    people.p3 = await peopleService.create({
+    people.p5 = await peopleService.create({
       nome: 'Tomás Santos',
       cpf: '231.410.874-40',
       data_nascimento: '24/03/2003',
@@ -43,7 +43,7 @@ describe('PEOPLE', () => {
       habilitado: 'sim',
     });
     const res = await request(app)
-      .put(`/api/v1/people/${people.p3._id}`)
+      .put(`/api/v1/people/${people.p5._id}`)
       .send(
         {
           nome: 'Rafael Tomás',
