@@ -166,7 +166,7 @@ describe('rental', () => {
           atividades: 'Aluguel de Carros E Gestão de Frotas',
           endereco: [
             {
-              cep:'',
+              cep: '',
               number: '2085',
               isFilial: false,
             },
