@@ -31,5 +31,4 @@ function validateCPF(cpf) {
   if (rev !== parseInt(cpf.charAt(10))) return false;
   return true;
 }
-
 module.exports = validateCPF;

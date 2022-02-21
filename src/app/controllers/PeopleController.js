@@ -1,11 +1,12 @@
 const peopleService = require('../services/PeopleService');
 const NotFound = require('../errors/NotFound');
+const errorCodes = require('../utils/errorCodes');
 
 class peopleController {
   async create(req, res) {
     try {
       const data = await peopleService.create(req.body);
-      return res.status(201).json({
+      return res.status(200).json({
         Pessoa: {
           _id: data.id,
           nome: data.nome,
@@ -15,13 +16,13 @@ class peopleController {
           senha: data.senha,
           habilitado: data.habilitado,
         },
-      });
+      }).send();
     } catch (error) {
-      return res.status(peopleService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -36,11 +37,11 @@ class peopleController {
         Pessoas: data,
       });
     } catch (error) {
-      return res.status(peopleService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -53,11 +54,11 @@ class peopleController {
       const people = await peopleService.findById(id);
       return res.status(200).json(people);
     } catch (error) {
-      return res.status(peopleService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -74,11 +75,11 @@ class peopleController {
       await peopleService.delete(peopleId);
       res.status(204).end();
     } catch (error) {
-      return res.status(peopleService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -89,18 +90,18 @@ class peopleController {
     const peopleId = req.params.id;
     const newData = req.body;
     try {
-      const people = await peopleService.findId(peopleId);
+      const people = await peopleService.findById(peopleId);
       if (people === null) {
         throw new NotFound(`ID: ${peopleId}`);
       }
       const updatedpeople = await peopleService.update(peopleId, newData);
       res.status(200).json(updatedpeople);
     } catch (error) {
-      return res.status(peopleService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });

@@ -1,6 +1,6 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const InvalidBody = require('../../errors/InvalidBody');
-const validateCNPJ = require('../../helpers/cnpj');
+const validateCNPJ = require('../../utils/cnpj');
 
 const CNPJ = (cnpj, helper) => {
   if (validateCNPJ(cnpj)) {
@@ -10,7 +10,8 @@ const CNPJ = (cnpj, helper) => {
 };
 
 const enderecoValidations = Joi.object({
-  cep: Joi.string().length(8).trim().required(),
+  cep: Joi.string().min(8).max(9).trim()
+    .required(),
   number: Joi.string().trim().required(),
   complemento: Joi.string().trim(),
   isFilial: Joi.boolean().required(),

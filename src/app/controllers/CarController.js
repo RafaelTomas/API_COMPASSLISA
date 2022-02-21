@@ -1,10 +1,12 @@
 const CarService = require('../services/CarService');
 const NotFound = require('../errors/NotFound');
+const errorCodes = require('../utils/errorCodes');
 
 class CarController {
   async create(req, res) {
+    const payload = req.body;
     try {
-      const data = await CarService.create(req.payload);
+      const data = await CarService.create(payload);
       return res.status(201).json({
         veiculos: {
           id: data.id,
@@ -16,12 +18,14 @@ class CarController {
         },
       });
     } catch (error) {
-      return res.status(CarService.errorCodes(error)).json({
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            description: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
+
       });
     }
   }
@@ -34,11 +38,11 @@ class CarController {
         cars: data,
       });
     } catch (error) {
-      return res.status(CarService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -51,11 +55,11 @@ class CarController {
       const car = await CarService.findById(id);
       return res.status(200).json(car);
     } catch (error) {
-      return res.status(CarService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -72,11 +76,11 @@ class CarController {
       await CarService.delete(carId);
       res.status(204).end();
     } catch (error) {
-      return res.status(CarService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -87,36 +91,36 @@ class CarController {
     const carId = req.params.id;
     const newData = req.payload;
     try {
-      const car = await CarService.findId(carId);
+      const car = await CarService.findById(carId);
       if (!car) {
         throw new NotFound(`ID: ${carId}`);
       }
       const updatedcar = await CarService.update(carId, newData);
       res.status(200).json(updatedcar);
     } catch (error) {
-      return res.status(CarService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
     }
   }
 
-  async patch(req, res) {
+  async updateOne(req, res) {
     const { id, acessorio_id } = req.params;
     const payload = req.body;
     try {
       const updateItem = await CarService.updateitem(id, acessorio_id, payload);
       res.status(200).json(updateItem);
     } catch (error) {
-      return res.status(CarService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });

@@ -4,7 +4,7 @@
   "description": "Compassolisa - Alugue seu carro de luxo!",
   "main": "./src/server.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage --coverageReporters ",
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
     "lint": "eslint . --fix"

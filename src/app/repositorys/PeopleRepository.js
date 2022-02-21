@@ -31,11 +31,11 @@ class PeopleRepository {
   }
 
   async delete(id) {
-    return peopleSchema.deleteOne(id);
+    return peopleSchema.findByIdAndDelete(id);
   }
 
   async update(id) {
-    return peopleSchema.updateOne(id);
+    return peopleSchema.findByIdAndUpdate(id);
   }
 }
 module.exports = new PeopleRepository();

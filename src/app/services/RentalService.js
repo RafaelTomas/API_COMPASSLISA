@@ -1,7 +1,5 @@
 const RentalRepository = require('../repositorys/RentalRepository');
 const ViaCep = require('../repositorys/ViaCep/viaCepRepository');
-const NotFound = require('../errors/NotFound');
-const InvalidBody = require('../errors/InvalidBody');
 
 class RentalService {
   async create(payload) {
@@ -43,18 +41,6 @@ class RentalService {
   async update(id) {
     const data = await RentalRepository.update(id);
     return data;
-  }
-
-  errorCodes(erro) {
-    let status = 500;
-    if (erro instanceof NotFound) {
-      status = 404;
-    }
-    if (erro instanceof InvalidBody) {
-      status = 400;
-    }
-
-    return status;
   }
 }
 

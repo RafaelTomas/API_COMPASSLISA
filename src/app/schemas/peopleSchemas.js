@@ -30,7 +30,6 @@ const peopleSchema = mongoose.Schema({
   },
   habilitado: {
     type: String,
-    enum: ['sim', 'não'],
     required: true,
   },
 });

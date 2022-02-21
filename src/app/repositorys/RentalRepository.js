@@ -31,11 +31,11 @@ class RentalRepository {
   }
 
   async delete(id) {
-    return RentalSchema.deleteOne(id);
+    return RentalSchema.findByIdAndDelete(id);
   }
 
   async update(id) {
-    return RentalSchema.updateOne(id);
+    return RentalSchema.findByIdAndUpdate(id);
   }
 }
 module.exports = new RentalRepository();

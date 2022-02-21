@@ -1,6 +1,4 @@
 const CarRepository = require('../repositorys/CarRepository');
-const NotFound = require('../errors/NotFound');
-const InvalidBody = require('../errors/InvalidBody');
 
 class CarService {
   async create(payload) {
@@ -31,18 +29,6 @@ class CarService {
   async updateitem(id, acessorio_id, payload) {
     const data = await CarRepository.updateItem(id, acessorio_id, payload);
     return data;
-  }
-
-  errorCodes(erro) {
-    let status = 500;
-    if (erro instanceof NotFound) {
-      status = 404;
-    }
-    if (erro instanceof InvalidBody) {
-      status = 400;
-    }
-
-    return status;
   }
 }
 

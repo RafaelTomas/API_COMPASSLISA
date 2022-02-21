@@ -1,5 +1,6 @@
 const RentalService = require('../services/RentalService');
 const NotFound = require('../errors/NotFound');
+const errorCodes = require('../utils/errorCodes');
 
 class RentalController {
   async create(req, res) {
@@ -11,7 +12,8 @@ class RentalController {
       return res.status(400).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -26,11 +28,11 @@ class RentalController {
         Locadoras: data,
       });
     } catch (error) {
-      return res.status(RentalService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -43,11 +45,11 @@ class RentalController {
       const Rental = await RentalService.findById(id);
       return res.status(200).json(Rental);
     } catch (error) {
-      return res.status(RentalService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -64,11 +66,11 @@ class RentalController {
       await RentalService.delete(RentalId);
       res.status(204).end();
     } catch (error) {
-      return res.status(RentalService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
@@ -79,18 +81,18 @@ class RentalController {
     const RentalId = req.params.id;
     const newData = req.body;
     try {
-      const rental = await RentalService.findId(RentalId);
+      const rental = await RentalService.findById(RentalId);
       if (!rental) {
         throw new NotFound(`ID: ${RentalId}`);
       }
       const updatedRental = await RentalService.update(RentalId, newData);
       res.status(200).json(updatedRental);
     } catch (error) {
-      return res.status(RentalService.errorCodes(error)).json({
-        message: 'bad request',
+      return res.status(errorCodes(error)).json({
         details: [
           {
-            message: error.message,
+            description: 'bad request',
+            name: error.message,
           },
         ],
       });
