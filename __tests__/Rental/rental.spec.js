@@ -22,9 +22,7 @@ describe('Rental', () => {
             number: '2085',
             isFilial: false,
           },
-
         ],
-
       });
     expect(res.statusCode).toBe(201);
   });

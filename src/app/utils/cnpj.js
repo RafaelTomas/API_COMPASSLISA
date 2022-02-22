@@ -14,7 +14,7 @@ function validateCNPJ(cnpj) {
         || cnpj === '99999999999999') { return false; }
   let tamanho = cnpj.length - 2;
   let numeros = cnpj.substring(0, tamanho);
- 
+
   const digitos = cnpj.substring(tamanho);
   let soma = 0;
   let pos = tamanho - 7;

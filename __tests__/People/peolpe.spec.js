@@ -41,7 +41,7 @@ describe('PEOPLE', () => {
     const res = await request(app)
       .get(`/api/v1/people/${people.p4._id}`);
     expect(res.statusCode).toBe(200);
-  }); 
+  });
 
   it('PUT - UPDATE', async () => {
     people.p1 = await peopleService.create({
