@@ -1,5 +1,4 @@
 const ReserveController = require('../controllers/ReserveController');
-
 const validationId = require('../validations/id');
 
 module.exports = (server, routes, prefix = '/api/v1/rental/:id/reserve') => {
