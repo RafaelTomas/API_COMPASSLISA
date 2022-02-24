@@ -33,8 +33,26 @@ describe('Rental', () => {
     expect(res.statusCode).toBe(200);
   });
 
+  it('GET - FIND ONE', async () => {
+    rental.r1 = await rentalService.create({
+      nome: 'Localiza Rent a Car',
+      cnpj: '16670085000155',
+      atividades: 'Aluguel de Carros E Gestão de Frotas',
+      endereco: [
+        {
+          cep: '54725-000',
+          number: '2085',
+          isFilial: false,
+        },
+      ],
+    });
+    const res = await request(app)
+      .get(`/api/v1/rental/${rental.r1._id}`);
+    expect(res.statusCode).toBe(200);
+  });
+
   it('PUT - UPDATE', async () => {
-    rental.p6 = await rentalService.create(
+    rental.r32 = await rentalService.create(
       {
         nome: 'Localiza Dealship',
         cnpj: '16.670.085/0001-55',
@@ -48,27 +66,29 @@ describe('Rental', () => {
         ],
       },
     );
-    const res = await request(app).put(`/api/v1/rental/${rental.p6._id}`).send(
-      {
-        nome: 'Localiza Rent a Car',
-        cnpj: '16.670.085/0002-55',
-        atividades: 'Aluguel de Carros E Gestão de Frotas',
-        endereco: [
-          {
-            cep: '54725-000',
-            number: '1234',
-            isFilial: true,
-          },
+    const res = await request(app)
+      .put(`/api/v1/rental/${rental.r32._id}`)
+      .send(
+        {
+          nome: 'Localiza Rent a Car',
+          cnpj: '16.670.085/0002-55',
+          atividades: 'Gestão de Frotas',
+          endereco: [
+            {
+              cep: '54725-000',
+              number: '1234',
+              isFilial: true,
+            },
 
-        ],
-      },
-    );
+          ],
+        },
+      );
 
     expect(res.statusCode).toBe(200);
   });
 
   it('DELETE - DELETE RENTAL', async () => {
-    rental.p7 = await rentalService.create({
+    rental.r30 = await rentalService.create({
       nome: 'Localiza Dealship',
       cnpj: '07.239.488/0001-54',
       atividades: 'Aluguel de Carros ',
@@ -80,13 +100,19 @@ describe('Rental', () => {
         },
       ],
     });
-    const res = await request(app).delete(`/api/v1/rental/${rental.p7._id}`);
+    const res = await request(app)
+      .delete(`/api/v1/rental/${rental.r30._id}`);
     expect(res.statusCode).toBe(204);
   });
   /* ERROR */
   it('GET - NOT FOUND', async () => {
     const res = await request(app)
       .get('/api/v1/retnal');
+    expect(res.statusCode).toBe(404);
+  });
+  it('GET - NOT FOUND ID', async () => {
+    const res = await request(app)
+      .get('/api/v1/retnal/6212651960672c217f621e06');
     expect(res.statusCode).toBe(404);
   });
   it('POST - BAD REQUEST', async () => {

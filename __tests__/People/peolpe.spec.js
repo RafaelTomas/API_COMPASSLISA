@@ -69,7 +69,7 @@ describe('PEOPLE', () => {
   });
 
   it('DELETE - DELETE PEOPLE', async () => {
-    people.p2 = await peopleService.create({
+    people.p25 = await peopleService.create({
       nome: 'Tomás Santos',
       cpf: '231.410.874-40',
       data_nascimento: '24/03/2003',
@@ -78,7 +78,7 @@ describe('PEOPLE', () => {
       habilitado: 'sim',
     });
     const res = await request(app)
-      .delete(`/api/v1/people/${people.p2._id}`);
+      .delete(`/api/v1/people/${people.p25._id}`);
     expect(res.statusCode).toBe(204);
   });
 
@@ -90,6 +90,12 @@ describe('PEOPLE', () => {
     const res = await request(app)
       .get('/api/v1/peolpe');
     expect(res.statusCode).toBe(404);
+  });
+
+  it('GET - NOT FOUND ID', async () => {
+    const res = await request(app)
+      .get('/api/v1/people/6212651960672c217f621e06}');
+    expect(res.statusCode).toBe(400);
   });
 
   it('POST - BAD REQUEST', async () => {
