@@ -1,22 +1,22 @@
-const bcrypt = require('bcryptjs');
 const authenticateService = require('../services/AuthenticateService');
-const generateToken = require('../helpers/generateToken');
+const errorCodes = require('../utils/errorCodes');
 
 class AuthenticateController {
   async authenticate(req, res) {
-    const { email, senha } = req.body;
-    const user = await authenticateService.find({ email });
-
-    if (!user) {
-      return res.status(404).json({ error: 'usuario não encontrado' });
+    const payload = req.body;
+    try {
+      const user = await authenticateService.find(payload);
+      return res.status(200).json(user);
+    } catch (error) {
+      return res.status(errorCodes(error)).json({
+        details: [
+          {
+            description: 'bad request',
+            name: error.message,
+          },
+        ],
+      });
     }
-    if (!(await bcrypt.compareSync(senha, user.senha))) {
-      return res.status(400).json({ error: 'Senha invalida' });
-    }
-
-    user.senha = undefined;
-
-    res.send({ user, token: generateToken({ id: user.id }) });
   }
 }
 

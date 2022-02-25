@@ -116,6 +116,10 @@ $ npm run dev
 
 ---
 
+##  👨‍💻Deploy
+
+> Deploy feito com o heroku: https://compasslisauol.herokuapp.com/api-docs/
+
 ## 👨🏿‍🔬 Testes 
 
  

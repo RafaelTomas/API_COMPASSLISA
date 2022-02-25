@@ -26,7 +26,6 @@ const peopleSchema = mongoose.Schema({
   senha: {
     type: String,
     required: true,
-    select: false,
   },
   habilitado: {
     type: String,

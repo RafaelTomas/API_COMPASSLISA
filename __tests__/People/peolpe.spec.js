@@ -9,7 +9,9 @@ describe('PEOPLE', () => {
   beforeEach(async () => {
     await truncate();
   });
-  /*   CRUD  */
+  /*
+    CRUD
+  */
   it('POST - CREATE PEOPLE', async () => {
     const res = await request(app)
       .post('/api/v1/people/')
@@ -23,6 +25,7 @@ describe('PEOPLE', () => {
       });
     expect(res.statusCode).toBe(200);
   });
+
   it('GET - FIND ALL', async () => {
     const res = await request(app)
       .get('/api/v1/people');
@@ -44,24 +47,24 @@ describe('PEOPLE', () => {
   });
 
   it('PUT - UPDATE', async () => {
-    people.p1 = await peopleService.create({
-      nome: 'Tomás Santos',
-      cpf: '231.410.874-40',
+    people.p30 = await peopleService.create({
+      nome: 'Rafael Santos',
+      cpf: '704.385.464-40',
       data_nascimento: '24/03/2003',
-      email: 'tomascompasso@gmail.com',
+      email: 'compasso@gmail.com',
       senha: 'Rafael@12',
       habilitado: 'sim',
     });
     const res = await request(app)
-      .put(`/api/v1/people/${people.p1._id}`)
+      .put(`/api/v1/people/${people.p30._id}`)
       .send(
         {
-          nome: 'Rafael Tomás',
-          cpf: '231.410.874-40',
-          data_nascimento: '24/03/2002',
-          email: 'tricolor@gmail.com',
+          nome: 'Rafael Souza',
+          cpf: '558.295.500-32',
+          data_nascimento: '24/03/2003',
+          email: 'rafaelcmpasso@gmail.com',
           senha: 'Rafael@12',
-          habilitado: 'não',
+          habilitado: 'sim',
         },
       );
 
@@ -90,6 +93,12 @@ describe('PEOPLE', () => {
     const res = await request(app)
       .get('/api/v1/peolpe');
     expect(res.statusCode).toBe(404);
+  });
+
+  it('GET - NOT FOUND ID', async () => {
+    const res = await request(app)
+      .get('/api/v1/people/6212651960672c217f621e06}');
+    expect(res.statusCode).toBe(400);
   });
 
   it('POST - BAD REQUEST', async () => {
