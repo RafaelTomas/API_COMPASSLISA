@@ -88,7 +88,7 @@ describe('Rental', () => {
   });
 
   it('DELETE - DELETE RENTAL', async () => {
-    rental.r30 = await rentalService.create({
+    rental.r40 = await rentalService.create({
       nome: 'Localiza Dealship',
       cnpj: '07.239.488/0001-54',
       atividades: 'Aluguel de Carros ',
@@ -101,7 +101,7 @@ describe('Rental', () => {
       ],
     });
     const res = await request(app)
-      .delete(`/api/v1/rental/${rental.r30._id}`);
+      .delete(`/api/v1/rental/${rental.r40._id}`);
     expect(res.statusCode).toBe(204);
   });
   /* ERROR */
